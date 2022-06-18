@@ -32,8 +32,9 @@ fn deposit(){
     println!("\nEnter amount you wish to deposit:");
     let mut amount= String::new();
     io::stdin().read_line(&mut amount).expect("msg");
-    let amount = amount.trim().parse::<i32>().expect("invalid input");
-    //TODO: Code to deposit
+    let amount = amount.trim().parse::<f32>().expect("invalid input");
+    let balance: f32 = 79.89; //TODO assign value from user object
+    println!("\tSuccesfuly deposited {}$\n\tNew account balance {}$",amount,balance+&amount);
 
 }
 fn withdraw(){
@@ -48,7 +49,7 @@ fn withdraw(){
     if balance-amount>0.0 {
         println!("\tSuccesfuly withdrew {}$\n\tNew account balance {}$",amount,balance-&amount);
     }else {
-        println!("{}$, insufficient account balance",balance);
+        println!("\tAvailable amount {}$, insufficient account balance",balance);
     }
 }
 fn transfer(){}
