@@ -10,11 +10,11 @@ impl Account {
         Self { name: name.to_string(), balance: 0.0 }
     }
 
-    pub fn deposit(&mut self,amount: f32){
-        self.balance+=amount;
+    pub fn getBalance(&self) -> f32{
+        self.balance
     }
 
-    pub fn withdraw(&mut self,amount: f32){
-        self.balance-=amount;
+    pub fn reset_amount(&mut self,amount: f32){
+        self.balance=amount;
     }
 }
