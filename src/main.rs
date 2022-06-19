@@ -1,7 +1,6 @@
 mod account;
 use std::io;
 
-use crate::account::Account;
 /*
 Print menu
 prompt user input
@@ -11,13 +10,14 @@ fn register() -> account::Account{
     println!("\nWelcome to the registration page.\nPlease enter your name to create an account:");
     let mut name= String::new();
     io::stdin().read_line(&mut name).expect("msg");
-    //TODO: return objects
     let user: account::Account = account::Account::new(&name);
     println!("\tCreated user {}\tAccount balance: 0",name);
     user
 }
+
 fn update(){}
 fn delete(){}
+
 fn deposit(user: account::Account) -> f32{
     println!("\nEnter amount you wish to deposit:");
     let mut amount= String::new();
@@ -27,6 +27,7 @@ fn deposit(user: account::Account) -> f32{
     println!("\tSuccesfuly deposited {}$\n\tNew account balance {}$",amount,balance+&amount);
     balance+&amount
 }
+
 fn withdraw(user: account::Account) -> f32{
     //TODO: Code to identify user and respective balance
 
@@ -35,7 +36,7 @@ fn withdraw(user: account::Account) -> f32{
     io::stdin().read_line(&mut amount).expect("msg");
     let amount = amount.trim().parse::<f32>().expect("invalid input");
     
-    let balance: f32 = 79.89; //TODO assign value from user object
+    let balance: f32 = user.getBalance(); 
     if balance-amount>0.0 {
         println!("\tSuccesfuly withdrew {}$\n\tNew account balance {}$",amount,balance-&amount);
     }else {
@@ -45,6 +46,7 @@ fn withdraw(user: account::Account) -> f32{
 }
 fn transfer(){}
 fn quit(){}
+
 fn main() {
 
     let menu = ["Register new account","Update account information","Delete account records","Deposit Money","Withdraw Money","Transfer Money","Exit"];
